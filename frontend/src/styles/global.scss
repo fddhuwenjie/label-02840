@@ -642,6 +642,16 @@ $breakpoint-xl: 768px;   // 平板
   
   body {
     font-size: 16px;
+    background: #e8e8e8;
+  }
+  
+  // 所有页面统一最大宽度
+  .app-container {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--bg-primary);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
   }
   
   .page-container {
@@ -652,14 +662,25 @@ $breakpoint-xl: 768px;   // 平板
   }
   
   .van-tabbar {
-    max-width: 640px !important;
+    width: 640px !important;
     left: 50% !important;
-    transform: translateX(-50%) !important;
+    right: auto !important;
+    margin-left: -320px !important;
   }
   
   .van-nav-bar {
-    max-width: 640px;
-    margin: 0 auto;
+    width: 640px;
+    left: 50% !important;
+    right: auto !important;
+    margin-left: -320px;
+  }
+  
+  // 固定定位元素居中
+  .van-popup--bottom {
+    width: 640px;
+    left: 50% !important;
+    right: auto !important;
+    margin-left: -320px;
   }
   
   .btn-luxury {

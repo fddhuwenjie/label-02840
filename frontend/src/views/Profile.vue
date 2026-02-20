@@ -19,7 +19,7 @@
             {{ userStore.isLoggedIn ? '欢迎回来，尊贵的会员' : '登录享受专属优惠' }}
           </p>
         </div>
-        <van-icon name="arrow" class="arrow-icon" />
+        <van-icon v-if="!userStore.isLoggedIn" name="arrow" class="arrow-icon" />
       </div>
     </header>
     

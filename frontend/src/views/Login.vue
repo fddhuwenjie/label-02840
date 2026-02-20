@@ -54,18 +54,6 @@
       <!-- 其他操作 -->
       <div class="other-actions">
         <button class="link-btn" @click="goToRegister">新用户注册</button>
-        <button class="link-btn">忘记密码</button>
-      </div>
-      
-      <!-- 测试账号 -->
-      <div class="test-account">
-        <div class="divider">
-          <span class="divider-line"></span>
-          <span class="divider-text">测试账号</span>
-          <span class="divider-line"></span>
-        </div>
-        <p>test / 123456</p>
-        <p>admin / admin123</p>
       </div>
     </div>
   </div>
@@ -238,7 +226,7 @@ const handleLogin = async () => {
 
 .other-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 16px 0;
 }
 
@@ -250,37 +238,5 @@ const handleLogin = async () => {
   cursor: pointer;
   
   &:active { color: var(--text-primary); }
-}
-
-.test-account {
-  margin-top: 60px;
-  text-align: center;
-  
-  p {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin: 6px 0;
-    font-family: monospace;
-  }
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.divider-line {
-  flex: 1;
-  height: 1px;
-  background: var(--border-color);
-}
-
-.divider-text {
-  font-size: 11px;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 </style>

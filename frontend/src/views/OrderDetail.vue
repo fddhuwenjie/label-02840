@@ -331,6 +331,13 @@ onMounted(() => {
   padding: 16px 20px;
   background: var(--bg-primary);
   border-top: 1px solid var(--border-light);
+  
+  @media screen and (min-width: 768px) {
+    width: 640px;
+    left: 50%;
+    right: auto;
+    margin-left: -320px;
+  }
 }
 
 :deep(.van-button--danger) {

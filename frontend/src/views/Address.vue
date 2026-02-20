@@ -118,13 +118,21 @@
  * 收货地址页面组件
  * 管理用户的收货地址
  */
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { showToast, showConfirmDialog } from 'vant'
 import { showError } from '@/utils/errorHandler'
+import { useUserStore } from '@/stores/user'
 
 const router = useRouter()
 const route = useRoute()
+const userStore = useUserStore()
+
+// 获取当前用户的存储key
+const getStorageKey = () => {
+  const userId = userStore.userInfo?.id || 'guest'
+  return `addresses_${userId}`
+}
 
 // 是否选择模式
 const isSelectMode = computed(() => route.query.select === '1')
@@ -133,7 +141,18 @@ const isSelectMode = computed(() => route.query.select === '1')
 const selectedId = ref(null)
 
 // 地址列表
-const addresses = ref(JSON.parse(localStorage.getItem('addresses') || '[]'))
+const addresses = ref([])
+
+// 加载当前用户的地址
+const loadAddresses = () => {
+  const key = getStorageKey()
+  addresses.value = JSON.parse(localStorage.getItem(key) || '[]')
+}
+
+// 监听用户变化
+watch(() => userStore.userInfo?.id, () => {
+  loadAddresses()
+}, { immediate: true })
 
 // 显示表单弹窗
 const showForm = ref(false)
@@ -257,7 +276,8 @@ const handleSubmit = () => {
       addresses.value.push(addressData)
     }
     
-    localStorage.setItem('addresses', JSON.stringify(addresses.value))
+    const key = getStorageKey()
+    localStorage.setItem(key, JSON.stringify(addresses.value))
     showForm.value = false
     showToast('保存成功')
   } catch (e) {
@@ -270,11 +290,13 @@ const deleteAddress = async () => {
   try {
     await showConfirmDialog({
       title: '确认删除',
-      message: '确定要删除这个地址吗？'
+      message: '确定要删除这个地址吗？',
+      confirmButtonColor: '#1a1a1a'
     })
     
     addresses.value = addresses.value.filter(addr => addr.id !== editingAddress.value.id)
-    localStorage.setItem('addresses', JSON.stringify(addresses.value))
+    const key = getStorageKey()
+    localStorage.setItem(key, JSON.stringify(addresses.value))
     showForm.value = false
     showToast('删除成功')
   } catch (e) {
@@ -363,6 +385,13 @@ onMounted(() => {
   padding: 12px 16px;
   background: #fff;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  
+  @media screen and (min-width: 768px) {
+    width: 640px;
+    left: 50%;
+    right: auto;
+    margin-left: -320px;
+  }
 }
 
 // 表单弹窗

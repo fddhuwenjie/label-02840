@@ -388,6 +388,13 @@ const handleSubmit = async () => {
   background: var(--bg-primary);
   border-top: 1px solid var(--border-light);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  
+  @media screen and (min-width: 768px) {
+    width: 640px;
+    left: 50%;
+    right: auto;
+    margin-left: -320px;
+  }
 }
 
 .footer-info { display: flex; align-items: baseline; gap: 8px; }

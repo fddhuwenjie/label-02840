@@ -26,7 +26,7 @@
       >
         <van-swipe-item v-for="(image, index) in product.images" :key="index">
           <div class="gallery-slide">
-            <LazyImage :src="image" :alt="product.name" aspect-ratio="1" radius="0" />
+            <img :src="image" :alt="product.name" class="gallery-image" />
           </div>
         </van-swipe-item>
       </van-swipe>
@@ -249,6 +249,13 @@ onMounted(() => {
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
+  
+  @media screen and (min-width: 768px) {
+    width: 640px;
+    left: 50%;
+    right: auto;
+    margin-left: -320px;
+  }
 }
 
 .back-btn {
@@ -307,15 +314,26 @@ onMounted(() => {
 .gallery-section {
   position: relative;
   background: var(--bg-primary);
+  width: 100%;
 }
 
 .product-swipe {
+  width: 100%;
+  
   .gallery-slide { 
     height: 400px;
-    :deep(.lazy-image-wrapper) {
-      height: 100%;
-    }
+    width: 100%;
   }
+  
+  :deep(.van-swipe-item) {
+    width: 100% !important;
+  }
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .gallery-indicator {
@@ -584,6 +602,13 @@ onMounted(() => {
   background: var(--bg-primary);
   border-top: 1px solid var(--border-light);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+  
+  @media screen and (min-width: 768px) {
+    width: 640px;
+    left: 50%;
+    right: auto;
+    margin-left: -320px;
+  }
 }
 
 .footer-icons {

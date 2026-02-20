@@ -21,7 +21,7 @@
       <van-swipe class="hero-swipe" :autoplay="5000" :show-indicators="true">
         <van-swipe-item v-for="banner in banners" :key="banner.id">
           <div class="hero-slide" @click="handleBannerClick(banner)">
-            <LazyImage :src="banner.image" :alt="banner.title" aspect-ratio="2" radius="0" />
+            <img :src="banner.image" :alt="banner.title" class="hero-image" />
             <div class="hero-overlay"></div>
             <div class="hero-content">
               <span class="hero-tag">精选推荐</span>
@@ -248,18 +248,28 @@ const addToCart = (product) => {
 
 .hero-section { padding-top: 72px; }
 
-.hero-swipe { height: 220px; }
+.hero-swipe { 
+  height: 220px;
+  width: 100%;
+  
+  :deep(.van-swipe-item) {
+    width: 100% !important;
+  }
+}
 
 .hero-slide {
   position: relative;
   height: 100%;
+  width: 100%;
   cursor: pointer;
 }
 
-.hero-slide :deep(.lazy-image-wrapper) {
+.hero-image {
   position: absolute;
   inset: 0;
+  width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .hero-overlay {
@@ -662,5 +672,19 @@ const addToCart = (product) => {
 .feature-text {
   font-size: 11px;
   color: rgba(255,255,255,0.6);
+}
+
+// 大屏幕适配
+@media screen and (min-width: 768px) {
+  .luxury-header {
+    width: 640px;
+    left: 50%;
+    right: auto;
+    margin-left: -320px;
+  }
+  
+  .hero-swipe {
+    height: 280px;
+  }
 }
 </style>

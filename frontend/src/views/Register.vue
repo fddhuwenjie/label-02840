@@ -65,20 +65,8 @@
           </div>
         </div>
         
-        <!-- 用户协议 -->
-        <div class="agreement">
-          <div class="checkbox-wrapper" @click="agreed = !agreed">
-            <div class="custom-checkbox" :class="{ checked: agreed }">
-              <van-icon v-if="agreed" name="success" />
-            </div>
-            <span class="agreement-text">
-              我已阅读并同意 <a href="javascript:;">《用户协议》</a> 和 <a href="javascript:;">《隐私政策》</a>
-            </span>
-          </div>
-        </div>
-        
         <div class="form-actions">
-          <button type="submit" class="register-btn" :disabled="loading || !agreed">
+          <button type="submit" class="register-btn" :disabled="loading">
             {{ loading ? '注册中...' : '注册' }}
           </button>
         </div>
@@ -113,7 +101,6 @@ const formData = reactive({
   confirmPassword: ''
 })
 
-const agreed = ref(false)
 const loading = ref(false)
 
 const goBack = () => router.back()
@@ -136,11 +123,6 @@ const handleRegister = async () => {
   if (formData.password !== formData.confirmPassword) {
     showToast('两次密码输入不一致')
     logger.warn('注册校验失败', { error: '密码不一致' })
-    return
-  }
-  
-  if (!agreed.value) {
-    showToast('请先同意用户协议')
     return
   }
   
@@ -237,46 +219,6 @@ const handleRegister = async () => {
   outline: none;
   
   &::placeholder { color: var(--text-muted); }
-}
-
-.agreement { padding: 16px 0; }
-
-.checkbox-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  cursor: pointer;
-}
-
-.custom-checkbox {
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--border-color);
-  border-radius: 4px;
-  transition: var(--transition-base);
-  font-size: 12px;
-  color: #fff;
-  margin-top: 2px;
-  
-  &.checked {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-  }
-}
-
-.agreement-text {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  
-  a {
-    color: var(--text-primary);
-    text-decoration: underline;
-  }
 }
 
 .form-actions { padding: 20px 0; }

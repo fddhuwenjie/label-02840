@@ -3,15 +3,36 @@
  * 管理订单列表和订单操作
  */
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, watch } from 'vue'
+import { useUserStore } from '@/stores/user'
 
 export const useOrderStore = defineStore('order', () => {
+  const userStore = useUserStore()
+  
+  // 获取当前用户的存储key
+  const getStorageKey = () => {
+    const userId = userStore.userInfo?.id || 'guest'
+    return `orders_${userId}`
+  }
+  
   // 订单列表
-  const orders = ref(JSON.parse(localStorage.getItem('orders') || '[]'))
+  const orders = ref([])
+  
+  // 初始化加载当前用户的订单
+  const loadOrders = () => {
+    const key = getStorageKey()
+    orders.value = JSON.parse(localStorage.getItem(key) || '[]')
+  }
+  
+  // 监听用户变化，切换订单数据
+  watch(() => userStore.userInfo?.id, () => {
+    loadOrders()
+  }, { immediate: true })
   
   // 保存到本地存储
   const saveToStorage = () => {
-    localStorage.setItem('orders', JSON.stringify(orders.value))
+    const key = getStorageKey()
+    localStorage.setItem(key, JSON.stringify(orders.value))
   }
   
   // 根据状态筛选订单

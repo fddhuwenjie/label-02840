@@ -29,6 +29,42 @@ export const useUserStore = defineStore('user', () => {
     { id: 2, username: 'admin', password: 'admin123', phone: '13900139000', avatar: '' }
   ])))
   
+  // 初始化测试账号的收货地址
+  const initTestAddresses = () => {
+    // test 账号的地址
+    if (!localStorage.getItem('addresses_1')) {
+      localStorage.setItem('addresses_1', JSON.stringify([
+        {
+          id: 1001,
+          name: '张三',
+          phone: '13800138000',
+          area: '北京市 北京市 朝阳区',
+          areaCode: '110105',
+          detail: '建国路88号SOHO现代城A座1801',
+          fullAddress: '北京市 北京市 朝阳区 建国路88号SOHO现代城A座1801'
+        }
+      ]))
+    }
+    
+    // admin 账号的地址
+    if (!localStorage.getItem('addresses_2')) {
+      localStorage.setItem('addresses_2', JSON.stringify([
+        {
+          id: 2001,
+          name: '李四',
+          phone: '13900139000',
+          area: '上海市 上海市 徐汇区',
+          areaCode: '310104',
+          detail: '漕溪北路88号圣爱大厦2205',
+          fullAddress: '上海市 上海市 徐汇区 漕溪北路88号圣爱大厦2205'
+        }
+      ]))
+    }
+  }
+  
+  // 初始化
+  initTestAddresses()
+  
   /**
    * 用户登录
    * @param {string} username - 用户名
@@ -104,6 +140,7 @@ export const useUserStore = defineStore('user', () => {
     token.value = ''
     localStorage.removeItem('userInfo')
     localStorage.removeItem('token')
+    localStorage.removeItem('selectedAddress')
   }
   
   /**

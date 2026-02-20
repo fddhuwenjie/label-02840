@@ -3,15 +3,35 @@
  * 管理购物车商品列表、数量计算和相关操作
  */
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { createModuleLogger } from '@/utils/logger'
 import { validateQuantity } from '@/utils/validator'
+import { useUserStore } from '@/stores/user'
 
 const logger = createModuleLogger('CartStore')
 
 export const useCartStore = defineStore('cart', () => {
+  const userStore = useUserStore()
+  
+  // 获取当前用户的存储key
+  const getStorageKey = () => {
+    const userId = userStore.userInfo?.id || 'guest'
+    return `cartItems_${userId}`
+  }
+  
   // 购物车商品列表
-  const items = ref(JSON.parse(localStorage.getItem('cartItems') || '[]'))
+  const items = ref([])
+  
+  // 初始化加载当前用户的购物车
+  const loadCart = () => {
+    const key = getStorageKey()
+    items.value = JSON.parse(localStorage.getItem(key) || '[]')
+  }
+  
+  // 监听用户变化，切换购物车数据
+  watch(() => userStore.userInfo?.id, () => {
+    loadCart()
+  }, { immediate: true })
   
   // 购物车商品总数量
   const totalCount = computed(() => {
@@ -45,7 +65,8 @@ export const useCartStore = defineStore('cart', () => {
    */
   const saveToStorage = () => {
     try {
-      localStorage.setItem('cartItems', JSON.stringify(items.value))
+      const key = getStorageKey()
+      localStorage.setItem(key, JSON.stringify(items.value))
     } catch (e) {
       logger.error('保存购物车失败', e)
     }
