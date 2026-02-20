@@ -1,0 +1,25 @@
+# Docker Compose 配置文件
+# 蔬果购物H5电商项目
+
+services:
+  # 前端服务
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: fruit-veggie-frontend
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - fruit-veggie-network
+
+networks:
+  fruit-veggie-network:
+    driver: bridge

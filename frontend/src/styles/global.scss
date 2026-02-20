@@ -1,0 +1,747 @@
+/**
+ * 全局样式文件 - 高端时尚版
+ * 参考 Apple、Net-a-Porter、Aesop 等顶级品牌设计语言
+ */
+
+// 导入高端字体
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+// CSS变量 - 奢华主题配置
+:root {
+  // 主色调 - 深邃优雅
+  --primary-color: #1a1a1a;
+  --primary-light: #f8f8f8;
+  --primary-dark: #000000;
+  
+  // 点缀色 - 奢华金
+  --accent-color: #c9a962;
+  --accent-light: #e8dcc4;
+  --accent-dark: #9a7b3c;
+  
+  // 辅助色
+  --secondary-color: #6b7280;
+  --success-color: #059669;
+  --warning-color: #d97706;
+  --danger-color: #dc2626;
+  
+  // 文字颜色
+  --text-primary: #1a1a1a;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --text-white: #ffffff;
+  
+  // 背景色 - 温暖米色调
+  --bg-primary: #f5f3ef;
+  --bg-secondary: #edeae4;
+  --bg-tertiary: #e5e1d8;
+  --bg-dark: #1a1a1a;
+  
+  // 边框色
+  --border-color: #e8e4de;
+  --border-light: #f0ece6;
+  
+  // 间距
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  
+  // 圆角
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  // 阴影
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-elegant: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  
+  // 过渡
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-elegant: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+// 重置样式
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 
+               'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.01em;
+}
+
+// 标题字体
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+// 图片默认样式
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+// 链接默认样式
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+// 列表默认样式
+ul, ol {
+  list-style: none;
+}
+
+// 输入框默认样式
+input, textarea {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+// 按钮默认样式
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition-base);
+}
+
+// ==================== 通用工具类 ====================
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ==================== 高端动画效果 ====================
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+// 交错动画 - 默认可见，不依赖动画
+.animate-fadeInUp {
+  opacity: 1;
+}
+
+.animate-fadeIn {
+  opacity: 1;
+}
+
+.animate-scaleIn {
+  opacity: 1;
+}
+
+// ==================== 安全区域适配 ====================
+
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+// ==================== 页面容器 ====================
+
+.page-container {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  padding-bottom: 80px;
+}
+
+// ==================== 价格样式 ====================
+
+.price {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-feature-settings: 'tnum';
+  
+  &::before {
+    content: '¥';
+    font-size: 0.75em;
+    margin-right: 1px;
+  }
+}
+
+.original-price {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  font-size: 0.85em;
+  font-weight: 400;
+  
+  &::before {
+    content: '¥';
+  }
+}
+
+// ==================== 高端按钮样式 ====================
+
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: var(--primary-color);
+  color: var(--text-white);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: var(--transition-slow);
+  }
+  
+  &:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    
+    &::before {
+      transform: translateX(100%);
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: var(--transition-base);
+  
+  &:hover {
+    background: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+  }
+}
+
+// ==================== 高端卡片样式 ====================
+
+.card-elegant {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-base);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+}
+
+// ==================== 高端标签样式 ====================
+
+.tag-luxury {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+}
+
+.tag-accent {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+}
+
+// ==================== 分割线 ====================
+
+.divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: var(--spacing-lg) 0;
+}
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  margin: var(--spacing-xl) 0;
+}
+
+// ==================== 覆盖 Vant 组件样式 ====================
+
+// 导航栏
+.van-nav-bar {
+  background: var(--bg-primary) !important;
+  
+  .van-nav-bar__title {
+    font-weight: 500 !important;
+    letter-spacing: 0.02em;
+  }
+  
+  .van-nav-bar__arrow {
+    color: var(--text-primary) !important;
+  }
+}
+
+// 标签栏
+.van-tabbar {
+  height: 64px !important;
+  background: var(--bg-primary) !important;
+  border-top: 1px solid var(--border-light) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.03) !important;
+  
+  .van-tabbar-item {
+    font-size: 10px !important;
+    letter-spacing: 0.02em;
+    
+    &--active {
+      color: var(--primary-color) !important;
+    }
+  }
+  
+  .van-tabbar-item__icon {
+    font-size: 22px !important;
+    margin-bottom: 4px;
+  }
+}
+
+// 按钮
+.van-button--success {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  
+  &:active {
+    background: var(--primary-dark) !important;
+  }
+}
+
+.van-button--danger {
+  background: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+}
+
+// 标签
+.van-tag--success {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-secondary) !important;
+  border: none !important;
+  font-size: 10px !important;
+  letter-spacing: 0.02em;
+  padding: 2px 8px !important;
+}
+
+// 单元格
+.van-cell {
+  padding: 16px !important;
+  
+  &::after {
+    border-color: var(--border-light) !important;
+  }
+  
+  .van-cell__title {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+}
+
+// 提交栏
+.van-submit-bar {
+  background: var(--bg-primary) !important;
+  border-top: 1px solid var(--border-light) !important;
+  
+  .van-submit-bar__button {
+    background: var(--primary-color) !important;
+    border-radius: var(--radius-full) !important;
+    height: 44px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.05em;
+  }
+}
+
+// 操作栏
+.van-action-bar {
+  background: var(--bg-primary) !important;
+  border-top: 1px solid var(--border-light) !important;
+  padding: 8px 16px !important;
+  
+  .van-action-bar-button--danger {
+    background: var(--primary-color) !important;
+    border-radius: var(--radius-full) !important;
+  }
+  
+  .van-action-bar-button--warning {
+    background: var(--accent-color) !important;
+    border-radius: var(--radius-full) !important;
+  }
+}
+
+// 轮播指示器
+.van-swipe__indicator {
+  width: 20px !important;
+  height: 2px !important;
+  border-radius: 1px !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  
+  &--active {
+    background: var(--text-white) !important;
+    width: 28px !important;
+  }
+}
+
+// 空状态
+.van-empty {
+  padding: 60px 0 !important;
+  
+  .van-empty__description {
+    color: var(--text-muted);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+}
+
+// 步进器
+.van-stepper {
+  .van-stepper__minus,
+  .van-stepper__plus {
+    background: var(--bg-tertiary) !important;
+    border-radius: var(--radius-full) !important;
+  }
+  
+  .van-stepper__input {
+    background: transparent !important;
+    font-weight: 500;
+  }
+}
+
+// Toast
+.van-toast {
+  background: var(--primary-color) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 14px 24px !important;
+}
+
+
+// ==================== 响应式媒体查询 ====================
+
+// 断点定义
+$breakpoint-xs: 320px;   // 小屏手机
+$breakpoint-sm: 375px;   // 标准手机 (iPhone SE, 8)
+$breakpoint-md: 414px;   // 大屏手机 (iPhone Plus, Pro Max)
+$breakpoint-lg: 480px;   // 超大屏手机/小平板
+$breakpoint-xl: 768px;   // 平板
+
+// 小屏手机适配 (< 375px)
+@media screen and (max-width: #{$breakpoint-sm - 1}) {
+  :root {
+    --spacing-md: 12px;
+    --spacing-lg: 18px;
+    --spacing-xl: 24px;
+  }
+  
+  body {
+    font-size: 13px;
+  }
+  
+  .van-tabbar {
+    height: 56px !important;
+    
+    .van-tabbar-item__icon {
+      font-size: 20px !important;
+    }
+  }
+  
+  .btn-luxury {
+    padding: 12px 24px;
+    font-size: 12px;
+  }
+  
+  .btn-outline {
+    padding: 10px 20px;
+    font-size: 11px;
+  }
+  
+  .page-container {
+    padding-bottom: 70px;
+  }
+}
+
+// 标准手机 (375px - 413px)
+@media screen and (min-width: $breakpoint-sm) and (max-width: #{$breakpoint-md - 1}) {
+  body {
+    font-size: 14px;
+  }
+}
+
+// 大屏手机 (414px - 479px)
+@media screen and (min-width: $breakpoint-md) and (max-width: #{$breakpoint-lg - 1}) {
+  :root {
+    --spacing-lg: 28px;
+    --spacing-xl: 36px;
+  }
+  
+  body {
+    font-size: 15px;
+  }
+  
+  .van-tabbar {
+    height: 68px !important;
+    
+    .van-tabbar-item {
+      font-size: 11px !important;
+    }
+    
+    .van-tabbar-item__icon {
+      font-size: 24px !important;
+    }
+  }
+}
+
+// 超大屏手机/小平板 (480px - 767px)
+@media screen and (min-width: $breakpoint-lg) and (max-width: #{$breakpoint-xl - 1}) {
+  :root {
+    --spacing-lg: 32px;
+    --spacing-xl: 40px;
+    --spacing-2xl: 56px;
+  }
+  
+  body {
+    font-size: 15px;
+  }
+  
+  .page-container {
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  
+  .btn-luxury {
+    padding: 16px 40px;
+    font-size: 14px;
+  }
+}
+
+// 平板及以上 (>= 768px)
+@media screen and (min-width: $breakpoint-xl) {
+  :root {
+    --spacing-lg: 36px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+    --spacing-3xl: 80px;
+  }
+  
+  body {
+    font-size: 16px;
+  }
+  
+  .page-container {
+    max-width: 640px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-lg);
+    min-height: 100vh;
+  }
+  
+  .van-tabbar {
+    max-width: 640px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .van-nav-bar {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  
+  .btn-luxury {
+    padding: 16px 48px;
+    font-size: 14px;
+  }
+  
+  .btn-outline {
+    padding: 14px 36px;
+    font-size: 13px;
+  }
+}
+
+// 横屏适配
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .van-tabbar {
+    height: 52px !important;
+    
+    .van-tabbar-item__icon {
+      font-size: 18px !important;
+      margin-bottom: 2px;
+    }
+    
+    .van-tabbar-item {
+      font-size: 9px !important;
+    }
+  }
+  
+  .page-container {
+    padding-bottom: 60px;
+  }
+}
+
+// 高分辨率屏幕优化
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 192dpi) {
+  .divider,
+  .van-cell::after {
+    transform: scaleY(0.5);
+  }
+}
+
+// 深色模式支持 (可选)
+@media (prefers-color-scheme: dark) {
+  // 如需支持深色模式，可在此添加样式覆盖
+  // :root {
+  //   --bg-primary: #1a1a1a;
+  //   --bg-secondary: #2d2d2d;
+  //   --text-primary: #f5f5f5;
+  // }
+}
+
+// 减少动画偏好
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+// 对话框样式
+.van-dialog {
+  border-radius: var(--radius-lg) !important;
+  
+  .van-dialog__header {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .van-dialog__message {
+    color: var(--text-secondary);
+  }
+  
+  .van-dialog__confirm {
+    color: #1a1a1a !important;
+  }
+  
+  .van-dialog__cancel {
+    color: var(--text-secondary) !important;
+  }
+}
