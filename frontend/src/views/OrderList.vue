@@ -253,7 +253,6 @@ onMounted(() => {
   align-items: flex-start;
   gap: 10px;
   padding: 14px 20px;
-  background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-light);
 }
 

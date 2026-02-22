@@ -159,6 +159,12 @@ const handleSubmit = async () => {
 .cart-page {
   min-height: 100vh;
   background: var(--bg-secondary);
+  
+  @media screen and (min-width: 768px) {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--bg-secondary);
+  }
 }
 
 .cart-header {
@@ -313,6 +319,14 @@ const handleSubmit = async () => {
   background: var(--bg-primary);
   border-top: 1px solid var(--border-light);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  
+  // 平板及以上居中限宽
+  @media screen and (min-width: 768px) {
+    width: 640px;
+    left: 50%;
+    right: auto;
+    margin-left: -320px;
+  }
 }
 
 .select-all { display: flex; align-items: center; gap: 10px; cursor: pointer; }
