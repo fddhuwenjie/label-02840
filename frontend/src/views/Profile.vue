@@ -8,7 +8,8 @@
         <div class="avatar-wrapper">
           <div class="avatar">
             <van-icon v-if="!userStore.isLoggedIn" name="user-o" size="28" />
-            <span v-else class="avatar-text">{{ userStore.username.charAt(0).toUpperCase() }}</span>
+            <img v-else-if="userStore.avatar" :src="userStore.avatar" alt="头像" class="avatar-img" />
+            <van-icon v-else name="manager" size="32" color="#fff" />
           </div>
         </div>
         <div class="user-detail">
@@ -236,18 +237,20 @@ const handleLogout = async () => {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.avatar-text {
-  font-size: 28px;
-  font-weight: 600;
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .user-detail { flex: 1; }
