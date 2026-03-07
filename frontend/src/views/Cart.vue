@@ -121,7 +121,7 @@ const handleClearCart = async () => {
     await showConfirmDialog({ 
       title: '清空购物袋', 
       message: '确定要清空购物袋中的所有商品吗？',
-      confirmButtonColor: '#1a1a1a'
+      confirmButtonColor: '#2eb872'
     })
     cartStore.clearCart()
     showToast('已清空购物袋')

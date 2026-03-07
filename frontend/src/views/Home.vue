@@ -251,10 +251,6 @@ const addToCart = (product) => {
 .hero-swipe { 
   height: 220px;
   width: 100%;
-  
-  :deep(.van-swipe-item) {
-    width: 100% !important;
-  }
 }
 
 .hero-slide {
@@ -469,7 +465,7 @@ const addToCart = (product) => {
   top: 10px;
   left: 10px;
   padding: 4px 10px;
-  background: var(--primary-color);
+  background: var(--accent-color);
   color: #fff;
   font-size: 10px;
   font-weight: 600;
@@ -625,7 +621,7 @@ const addToCart = (product) => {
 .story-section {
   margin: 20px;
   padding: 40px 24px;
-  background: var(--bg-dark);
+  background: linear-gradient(135deg, #2eb872 0%, #1e9e5e 100%);
   border-radius: 20px;
   text-align: center;
 }
@@ -636,7 +632,7 @@ const addToCart = (product) => {
   display: inline-block;
   font-size: 10px;
   letter-spacing: 0.2em;
-  color: var(--accent-color);
+  color: rgba(255,255,255,0.8);
   margin-bottom: 16px;
 }
 

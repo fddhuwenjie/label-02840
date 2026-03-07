@@ -201,7 +201,7 @@ const callService = () => {
   showConfirmDialog({
     title: '联系客服',
     message: '确定拨打客服电话 400-888-8888？',
-    confirmButtonColor: '#1a1a1a'
+    confirmButtonColor: '#2eb872'
   }).then(() => {
     window.location.href = 'tel:400-888-8888'
   }).catch(() => {})

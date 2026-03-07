@@ -291,7 +291,7 @@ const deleteAddress = async () => {
     await showConfirmDialog({
       title: '确认删除',
       message: '确定要删除这个地址吗？',
-      confirmButtonColor: '#1a1a1a'
+      confirmButtonColor: '#2eb872'
     })
     
     addresses.value = addresses.value.filter(addr => addr.id !== editingAddress.value.id)

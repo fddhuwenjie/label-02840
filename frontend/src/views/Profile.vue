@@ -174,7 +174,7 @@ const callService = () => {
   showConfirmDialog({
     title: '联系客服',
     message: '确定拨打客服电话 400-888-8888？',
-    confirmButtonColor: '#1a1a1a'
+    confirmButtonColor: '#2eb872'
   }).then(() => {
     window.location.href = 'tel:400-888-8888'
   }).catch(() => {})
@@ -189,7 +189,7 @@ const handleLogout = async () => {
     await showConfirmDialog({ 
       title: '提示', 
       message: '确定要退出登录吗？',
-      confirmButtonColor: '#1a1a1a'
+      confirmButtonColor: '#2eb872'
     })
     userStore.logout()
     showToast('已退出登录')
@@ -216,7 +216,7 @@ const handleLogout = async () => {
   background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
   
   .logged-in & {
-    background: linear-gradient(135deg, #1a1a1a 0%, #374151 100%);
+    background: linear-gradient(135deg, #2eb872 0%, #1e9e5e 100%);
   }
 }
 

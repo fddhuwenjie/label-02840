@@ -143,7 +143,7 @@ const handleSubmit = async () => {
     await showConfirmDialog({
       title: '确认订单',
       message: `订单金额：¥${totalAmount.value.toFixed(2)}\n确认提交订单吗？`,
-      confirmButtonColor: '#1a1a1a'
+      confirmButtonColor: '#2eb872'
     })
     showLoadingToast({ message: '提交中...', forbidClick: true })
     // 模拟网络请求

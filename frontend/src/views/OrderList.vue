@@ -132,7 +132,7 @@ const handlePay = async (order) => {
     await showConfirmDialog({
       title: '确认付款',
       message: `订单金额：¥${order.totalPrice.toFixed(2)}`,
-      confirmButtonColor: '#1a1a1a'
+      confirmButtonColor: '#2eb872'
     })
     showLoadingToast({ message: '支付中...', forbidClick: true })
     // 模拟网络请求
@@ -153,7 +153,7 @@ const handleConfirm = async (order) => {
     await showConfirmDialog({
       title: '确认收货',
       message: '确认已收到商品？',
-      confirmButtonColor: '#1a1a1a'
+      confirmButtonColor: '#2eb872'
     })
     showLoadingToast({ message: '处理中...', forbidClick: true })
     await new Promise(resolve => setTimeout(resolve, 500))
