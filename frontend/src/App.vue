@@ -36,7 +36,7 @@ const route = useRoute()
 const router = useRouter()
 const cartStore = useCartStore()
 
-const cartCount = computed(() => cartStore.totalCount)
+const cartCount = computed(() => cartStore.items.length)
 
 const tabs = [
   { path: '/', icon: 'wap-home-o', label: '首页' },
