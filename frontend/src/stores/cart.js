@@ -47,7 +47,9 @@ export const useCartStore = defineStore('cart', () => {
   
   // 选中商品数量
   const selectedCount = computed(() => {
-    return items.value.filter(item => item.selected).length
+    return items.value
+      .filter(item => item.selected)
+      .reduce((sum, item) => sum + item.quantity, 0)
   })
   
   // 是否全选
